@@ -1,5 +1,60 @@
 .todo {
+  display: grid;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 5rem;
 }
 
-.btn {
+.form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.input {
+  font-size: inherit;
+  padding: 0.3em 0.7em;
+}
+
+.form .btn {
+  font-size: inherit;
+  padding: 0.3em 0.7em;
+  cursor: pointer;
+}
+
+.ul {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+}
+
+.li {
+  padding: 1rem;
+  box-shadow: 0 0.2rem 0.4rem #0006;
+  position: relative;
+}
+
+.p {
+  font-size: 1.2rem;
+  line-height: 1.2em;
+}
+
+.actions {
+  display: none;
+  gap: 1rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+.li:hover .actions {
+  display: flex;
+}
+.actions .btn {
+  font-size: 1rem;
+  padding: 0.3em 0.5em;
+  background-color: red;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
