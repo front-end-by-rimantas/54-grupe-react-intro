@@ -1,0 +1,15 @@
+.plusMinus {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 0;
+  font-size: 3rem;
+}
+
+.btn {
+  font-size: inherit;
+  width: 1.3em;
+}
+
+.count {
+  color: #555;
+}
