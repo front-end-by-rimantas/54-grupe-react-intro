@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import style from './Todo.module.css';
 
-export function TodoItem({ data, handleDeleteClick }) {
+export function TodoItem({ data, handleDeleteClick, handleTextUpdate }) {
     const [editing, setEditing] = useState(false);
-    const [savedText, setSavedText] = useState(data.text);
     const [text, setText] = useState(data.text);
 
     function handleInputChange(e) {
@@ -16,8 +15,8 @@ export function TodoItem({ data, handleDeleteClick }) {
             return;
         }
 
-        setSavedText(text);
         setEditing(false);
+        handleTextUpdate(data.id, text);
     }
 
     function handleEditClick() {
@@ -41,7 +40,7 @@ export function TodoItem({ data, handleDeleteClick }) {
     } else {
         return (
             <li key={data.id} className={style.li}>
-                <p className={style.p}>{savedText}</p>
+                <p className={style.p}>{data.text}</p>
                 <div className={style.actions}>
                     <button onClick={handleEditClick} className={style.btn}>Edit</button>
                     <button onClick={() => handleDeleteClick(data.id)} className={style.btn}>Delete</button>
