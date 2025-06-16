@@ -1,13 +1,15 @@
-import { TextList } from "./components/list/TextList";
-import { PlusMinus } from "./components/plus-minus/PlusMinus";
-import { Todo } from "./components/todo/Todo";
-
+import { BrowserRouter, Route, Routes } from "react-router";
+import { PageHome } from "./pages/PageHome";
+import { PageTodo } from "./pages/PageTodo";
+import { PagePlusMinus } from "./pages/PagePlusMinus";
 export function App() {
   return (
-    <>
-      <Todo />
-      <PlusMinus />
-      <TextList />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index path="/" element={<PageHome />} />
+        <Route path="/todo" element={<PageTodo />} />
+        <Route path="/plus-minus" element={<PagePlusMinus />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

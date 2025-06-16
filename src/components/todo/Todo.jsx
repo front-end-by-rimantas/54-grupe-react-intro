@@ -6,7 +6,7 @@ import { TodoItem } from './TodoItem';
 export function Todo() {
     const storageKey = '54gr_todo';
 
-    const [todoList, setTodoList] = useState([]);
+    const [todoList, setTodoList] = useState(null);
     const [text, setText] = useState('');
     const inputRef = useRef();
 
@@ -14,14 +14,23 @@ export function Todo() {
     useEffect(() => {
         try {
             const data = JSON.parse(localStorage.getItem(storageKey));
-            setTodoList(() => data);
+            if (data) {
+                setTodoList(() => data);
+            } else {
+                setTodoList(() => []);
+            }
         } catch (error) {
             console.log(error);
+            setTodoList(() => []);
         }
     }, []);
 
     // keiciantis konkreciam state
     useEffect(() => {
+        if (todoList === null) {
+            return;
+        }
+
         localStorage.setItem(storageKey, JSON.stringify(todoList));
     }, [todoList]);
 
@@ -34,6 +43,7 @@ export function Todo() {
         if (!text) {
             return;
         }
+        console.log(todoList);
 
         setTodoList(list => [{ id: randomNumber(1, 1e6), text }, ...list]);
         setText(() => '');
@@ -55,7 +65,7 @@ export function Todo() {
                 <button className={style.btn} type="submit">Create</button>
             </form>
             <ul className={style.ul}>
-                {todoList.map(todo =>
+                {todoList && todoList.map(todo =>
                     <TodoItem key={todo.id} data={todo}
                         handleDeleteClick={handleDeleteClick}
                         handleTextUpdate={handleTextUpdate} />)}
