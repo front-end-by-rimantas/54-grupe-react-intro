@@ -13,10 +13,16 @@ export function PlusMinus() {
     }
 
     return (
-        <div className={style.plusMinus}>
-            <button onClick={handleMinusClick} className={style.btn}>-</button>
-            <span className={style.count}>{count}</span>
-            <button onClick={handlePlusClick} className={style.btn}>+</button>
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <div className={style.plusMinus}>
+                        <button onClick={handleMinusClick} className={style.btn}>-</button>
+                        <span className={style.count}>{count}</span>
+                        <button onClick={handlePlusClick} className={style.btn}>+</button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
