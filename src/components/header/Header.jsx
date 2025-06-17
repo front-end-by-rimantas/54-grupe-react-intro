@@ -1,15 +1,14 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { menuData } from "../../data/menuData";
 
-export function Header({ activeIndex }) {
+export function Header() {
     const menuLinks = [];
 
     for (let i = 0; i < menuData.length; i++) {
         const link = menuData[i];
-        const active = i === activeIndex ? 'active' : '';
         menuLinks.push(
             <li key={link.href} className="nav-item">
-                <Link to={link.href} className={`nav-link ${active}`}>{link.text}</Link>
+                <NavLink to={link.href} className="nav-link">{link.text}</NavLink>
             </li>
         )
     }
