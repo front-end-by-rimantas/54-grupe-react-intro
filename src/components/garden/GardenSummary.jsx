@@ -1,7 +1,10 @@
-export function GardenSummary() {
+export function GardenSummary({ list }) {
     return (
         <div>
-            GARDEN SUMMARY: 0
+            <p>Skirtingos prekes: {list.length}</p>
+            <p>Bendras kiekis: {list.reduce((t, n) => t + n.amount, 0)}</p>
+            <p>Preke su maziausiu kiekiu: Morka</p>
+            <p>Preke su didziausiu kiekiu: Pomidoras</p>
         </div>
     )
 }
